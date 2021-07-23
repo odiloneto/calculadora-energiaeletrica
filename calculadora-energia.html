@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-compatible" content="IE=edge">
+	<meta name="viewport" content="width=divice-width, initial-scale=1.0">
+	<title>Calculadora de Energia</title>
+</head>
+<body>
+	<h1>calculadora de energia</h1>
+	Quantos Watts esta sendo gasto?<br />
+	<input id="watts" type="number" /><br/>
+	Quantas horas por dia?<br />
+	<input id="horas-dia" type="number" /><br/>
+	Valor do Kw/h da cidade?<br />
+	<input id="valor-kwh" type="number" /><br/>
+	<br><br/>
+	<button onclick="calcular()">Calcular</button> <br/>
+	<br><br/>
+	
+
+	O Valor mensal é <span id='resultado'></span> Reais<br/>
+
+	A Media diaria é de  <span id='resultado-dia'></span> Reais  
+
+	<script>
+	var watts = document.querySelector('#watts') 
+	var horas_dia = document.querySelector('#horas-dia')
+	var valor_kwh = document.querySelector('#valor-kwh')
+	var resultado = document.querySelector('#resultado')
+	var resultado_dia = document.querySelector('#resultado-dia')
+
+		function calcular() 
+		{	
+		if (!(parseFloat(watts.value)>0)) {alert("Você precisa digitar um valor numerico para o gasto em watts")
+		return false }
+		if (!(parseFloat(horas_dia.value)>0)) {alert("Você precisa digitar um valor numerico para a quantia de horas por dia")
+		return false }
+		if (!(parseFloat(valor_kwh.value)>0)) {alert("Você precisa digitar um valor numerico para o valor do kw/h da cidade") 
+		return false }
+
+	//Resultado do mês													
+	resultado.innerHTML = (parseFloat(watts.value) * 30 * parseFloat(horas_dia.value)/1000) * parseFloat(valor_kwh.value)
+
+	//Resultado do dia  
+	resultado_dia.innerHTML = (parseFloat(watts.value) * 30 * parseFloat(horas_dia.value)/1000) * parseFloat(valor_kwh.value)/30
+		}
+	</script>
+</body>
+</html>
